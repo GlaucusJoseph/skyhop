@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./index.css";
 import { useForm } from "react-hook-form";
 import UploadDragAndDrop from "../../Components/UploadDragAndDrop";
+import { PictureIcon } from "../../assets/svg";
 
 const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -32,7 +33,7 @@ const HomeScreen = () => {
             <div className="container">
               <div className="row">
                 <div className="col-7">
-                  <div className="col-12 ">
+                  <div className="col-12">
                     <div className="form-group">
                       <select
                         id="selectedImportName"
@@ -52,11 +53,20 @@ const HomeScreen = () => {
                     </div>
                   </div>
                   <hr />
-                  <div className="col-12 ">
+                  <div className="col-12">
                     <label>Select a manifest that you'd like to import</label>
-                    <div className="container"><UploadDragAndDrop/></div>
+                    <div className="container">
+                      <UploadDragAndDrop />
+                    </div>
                   </div>
-                  <div className="col-12 ">
+                  <hr />
+                  <div className="col-12">
+                    <div className="container">
+                      <PictureIcon width={"30"} height={"30"} />
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="col-12">
                     <ul>
                       <li>
                         Conducted maintenance, bug fixes, and made optimizations
@@ -82,33 +92,7 @@ const HomeScreen = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className="col-12 ">
-                    <ul>
-                      <li>
-                        Conducted maintenance, bug fixes, and made optimizations
-                        using technologies such as JavaScript, TypeScript,
-                        React, Meteor.js, and MongoDB.
-                      </li>
-                      <li>
-                        Designed a new login system and optimized all the stages
-                        of the medical attention to accept users of different
-                        nationalities expanding the business to Peru.
-                      </li>
-                      <li>
-                        Supervised quality control through the use of end-to-end
-                        testing tools like Cypress.
-                      </li>
-                      <li>
-                        Created an appointment system that increased the number
-                        of patients attended by doctors by 20% per month.
-                      </li>
-                      <li>
-                        Integrated the Whatsapp Cloud API with the login system
-                        resulting in a 10% cost reduction.
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-12 ">
+                  <div className="col-12">
                     <ul>
                       <li>
                         Conducted maintenance, bug fixes, and made optimizations
@@ -136,7 +120,7 @@ const HomeScreen = () => {
                   </div>
                 </div>
                 <div className="col-5">
-                  <div className="col-12 ">
+                  <div className="col-12">
                     <ul>
                       <li>
                         Conducted maintenance, bug fixes, and made optimizations
@@ -162,7 +146,7 @@ const HomeScreen = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className="col-12 ">
+                  <div className="col-12">
                     <ul>
                       <li>
                         Conducted maintenance, bug fixes, and made optimizations
@@ -188,7 +172,7 @@ const HomeScreen = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className="col-12 ">
+                  <div className="col-12">
                     <ul>
                       <li>
                         Conducted maintenance, bug fixes, and made optimizations
@@ -214,7 +198,7 @@ const HomeScreen = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className="col-12 ">
+                  <div className="col-12">
                     <ul>
                       <li>
                         Conducted maintenance, bug fixes, and made optimizations
@@ -240,7 +224,7 @@ const HomeScreen = () => {
                       </li>
                     </ul>
                   </div>
-                  <div className="col-12 ">
+                  <div className="col-12">
                     <ul>
                       <li>
                         Conducted maintenance, bug fixes, and made optimizations

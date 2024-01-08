@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./index.css";
 import { useForm } from "react-hook-form";
 import UploadDragAndDrop from "../../Components/UploadDragAndDrop";
 import { PictureIcon } from "../../assets/svg";
+import bytesToMB from "../../Utils/bytesToMB";
 
 const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const {
     handleSubmit,
@@ -17,6 +20,10 @@ const HomeScreen = () => {
       selectedImportName: "",
     },
   });
+
+  useEffect(() => {
+    console.log(selectedFile);
+  }, [selectedFile]);
 
   const onSubmitFullRegister = async (data: any) => {
     console.log(data);
@@ -56,68 +63,61 @@ const HomeScreen = () => {
                   <div className="col-12">
                     <label>Select a manifest that you'd like to import</label>
                     <div className="container">
-                      <UploadDragAndDrop />
+                      <UploadDragAndDrop setSelectedFile={setSelectedFile} />
                     </div>
                   </div>
                   <hr />
                   <div className="col-12">
                     <div className="container">
-                      <PictureIcon width={"30"} height={"30"} />
+                      <div className="row">
+                        <div className="col-1">
+                          <PictureIcon width={"30"} height={"30"} />
+                        </div>
+                        <div className="col-11">
+                          <div className="row">
+                            <div className="col-12 file-uploaded-text">
+                              {selectedFile && (
+                                <>
+                                  <div className="file-name">
+                                    {selectedFile.name}
+                                  </div>
+                                  <div className="file-size">
+                                    {bytesToMB(selectedFile.size)}MB
+                                  </div>
+                                </>
+                              )}
+                              {!selectedFile && (
+                                <div>No file has been selected</div>
+                              )}
+                            </div>
+                            <div className="col-12">
+                              <div
+                                className="progress"
+                                style={{ width: "100%" }}
+                              >
+                                <div
+                                  className="progress-bar"
+                                  role="progressbar"
+                                  style={{ width: `${uploadProgress}%` }}
+                                  aria-valuenow={uploadProgress}
+                                  aria-valuemin={0}
+                                  aria-valuemax={100}
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <hr />
+                  <hr />
                   <div className="col-12">
-                    <ul>
-                      <li>
-                        Conducted maintenance, bug fixes, and made optimizations
-                        using technologies such as JavaScript, TypeScript,
-                        React, Meteor.js, and MongoDB.
-                      </li>
-                      <li>
-                        Designed a new login system and optimized all the stages
-                        of the medical attention to accept users of different
-                        nationalities expanding the business to Peru.
-                      </li>
-                      <li>
-                        Supervised quality control through the use of end-to-end
-                        testing tools like Cypress.
-                      </li>
-                      <li>
-                        Created an appointment system that increased the number
-                        of patients attended by doctors by 20% per month.
-                      </li>
-                      <li>
-                        Integrated the Whatsapp Cloud API with the login system
-                        resulting in a 10% cost reduction.
-                      </li>
-                    </ul>
+                    <label>Elapse Data Checking:</label>
+                    <label>No Elapsed Dates!</label>
                   </div>
-                  <div className="col-12">
-                    <ul>
-                      <li>
-                        Conducted maintenance, bug fixes, and made optimizations
-                        using technologies such as JavaScript, TypeScript,
-                        React, Meteor.js, and MongoDB.
-                      </li>
-                      <li>
-                        Designed a new login system and optimized all the stages
-                        of the medical attention to accept users of different
-                        nationalities expanding the business to Peru.
-                      </li>
-                      <li>
-                        Supervised quality control through the use of end-to-end
-                        testing tools like Cypress.
-                      </li>
-                      <li>
-                        Created an appointment system that increased the number
-                        of patients attended by doctors by 20% per month.
-                      </li>
-                      <li>
-                        Integrated the Whatsapp Cloud API with the login system
-                        resulting in a 10% cost reduction.
-                      </li>
-                    </ul>
-                  </div>
+                  <hr />
+                  <div className="col-12">asdfasdf</div>
                 </div>
                 <div className="col-5">
                   <div className="col-12">
@@ -127,22 +127,14 @@ const HomeScreen = () => {
                         using technologies such as JavaScript, TypeScript,
                         React, Meteor.js, and MongoDB.
                       </li>
+                    </ul>
+                  </div>
+                  <div className="col-12">
+                    <ul>
                       <li>
-                        Designed a new login system and optimized all the stages
-                        of the medical attention to accept users of different
-                        nationalities expanding the business to Peru.
-                      </li>
-                      <li>
-                        Supervised quality control through the use of end-to-end
-                        testing tools like Cypress.
-                      </li>
-                      <li>
-                        Created an appointment system that increased the number
-                        of patients attended by doctors by 20% per month.
-                      </li>
-                      <li>
-                        Integrated the Whatsapp Cloud API with the login system
-                        resulting in a 10% cost reduction.
+                        Conducted maintenance, bug fixes, and made optimizations
+                        using technologies such as JavaScript, TypeScript,
+                        React, Meteor.js, and MongoDB.
                       </li>
                     </ul>
                   </div>
@@ -153,23 +145,6 @@ const HomeScreen = () => {
                         using technologies such as JavaScript, TypeScript,
                         React, Meteor.js, and MongoDB.
                       </li>
-                      <li>
-                        Designed a new login system and optimized all the stages
-                        of the medical attention to accept users of different
-                        nationalities expanding the business to Peru.
-                      </li>
-                      <li>
-                        Supervised quality control through the use of end-to-end
-                        testing tools like Cypress.
-                      </li>
-                      <li>
-                        Created an appointment system that increased the number
-                        of patients attended by doctors by 20% per month.
-                      </li>
-                      <li>
-                        Integrated the Whatsapp Cloud API with the login system
-                        resulting in a 10% cost reduction.
-                      </li>
                     </ul>
                   </div>
                   <div className="col-12">
@@ -179,23 +154,6 @@ const HomeScreen = () => {
                         using technologies such as JavaScript, TypeScript,
                         React, Meteor.js, and MongoDB.
                       </li>
-                      <li>
-                        Designed a new login system and optimized all the stages
-                        of the medical attention to accept users of different
-                        nationalities expanding the business to Peru.
-                      </li>
-                      <li>
-                        Supervised quality control through the use of end-to-end
-                        testing tools like Cypress.
-                      </li>
-                      <li>
-                        Created an appointment system that increased the number
-                        of patients attended by doctors by 20% per month.
-                      </li>
-                      <li>
-                        Integrated the Whatsapp Cloud API with the login system
-                        resulting in a 10% cost reduction.
-                      </li>
                     </ul>
                   </div>
                   <div className="col-12">
@@ -204,55 +162,15 @@ const HomeScreen = () => {
                         Conducted maintenance, bug fixes, and made optimizations
                         using technologies such as JavaScript, TypeScript,
                         React, Meteor.js, and MongoDB.
-                      </li>
-                      <li>
-                        Designed a new login system and optimized all the stages
-                        of the medical attention to accept users of different
-                        nationalities expanding the business to Peru.
-                      </li>
-                      <li>
-                        Supervised quality control through the use of end-to-end
-                        testing tools like Cypress.
-                      </li>
-                      <li>
-                        Created an appointment system that increased the number
-                        of patients attended by doctors by 20% per month.
-                      </li>
-                      <li>
-                        Integrated the Whatsapp Cloud API with the login system
-                        resulting in a 10% cost reduction.
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-12">
-                    <ul>
-                      <li>
-                        Conducted maintenance, bug fixes, and made optimizations
-                        using technologies such as JavaScript, TypeScript,
-                        React, Meteor.js, and MongoDB.
-                      </li>
-                      <li>
-                        Designed a new login system and optimized all the stages
-                        of the medical attention to accept users of different
-                        nationalities expanding the business to Peru.
-                      </li>
-                      <li>
-                        Supervised quality control through the use of end-to-end
-                        testing tools like Cypress.
-                      </li>
-                      <li>
-                        Created an appointment system that increased the number
-                        of patients attended by doctors by 20% per month.
-                      </li>
-                      <li>
-                        Integrated the Whatsapp Cloud API with the login system
-                        resulting in a 10% cost reduction.
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
+            <button className="uploadManifestButton" type="submit">
+              Continue Import
+            </button>
           </form>
         </div>
       </div>

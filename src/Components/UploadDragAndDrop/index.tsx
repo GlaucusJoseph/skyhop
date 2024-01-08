@@ -2,8 +2,8 @@ import { useCallback, useState } from "react";
 import "./index.css";
 import { FileIcon } from "../../assets/svg";
 
-const UploadDragAndDrop = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
+const UploadDragAndDrop = (props: any) => {
+  const { setSelectedFile } = props;
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -23,10 +23,6 @@ const UploadDragAndDrop = () => {
     setSelectedFile(file);
   };
 
-  const handleSubmit = useCallback(() => {
-    console.log("Archivo para subir:", selectedFile);
-  }, [selectedFile]);
-
   return (
     <div className="dnd-box-external">
       <div
@@ -45,7 +41,7 @@ const UploadDragAndDrop = () => {
         </div>
         <label htmlFor="fileInput">Drag & Drop Here Or Browse</label>
       </div>
-      <button onClick={handleSubmit} className="uploadManifestButton">
+      <button className="uploadManifestButton" type="button">
         Upload Manifest
       </button>
     </div>

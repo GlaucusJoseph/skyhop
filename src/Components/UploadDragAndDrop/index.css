@@ -1,0 +1,9 @@
+.dnd-box-external {
+  border: 2px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.dnd-box-internal {
+  border: 2px dashed #ccc;
+}

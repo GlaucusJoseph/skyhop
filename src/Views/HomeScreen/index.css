@@ -1,0 +1,35 @@
+.main-box {
+  background-color: grey;
+}
+
+.file-upload-box {
+  background-color: white;
+  width: 120vw;
+  height: 90vw;
+  max-width: 120vh;
+  max-height: 90vh;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.leave-button {
+  top: 10px;
+  right: 10px;
+  background-color: rgb(48, 85, 140);
+  color: white;
+  border-radius: 15px;
+  height: 45px;
+  width: 45px;
+  font-size: 25px;
+}
+
+.title {
+  color: rgb(48, 85, 140);
+  text-align: center; /* Centra el título */
+}
+
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 1.2rem;
+  text-decoration-color: rgb(207, 207, 207);
+}

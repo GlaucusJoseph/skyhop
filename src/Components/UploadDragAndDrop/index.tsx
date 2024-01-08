@@ -1,14 +1,15 @@
 import { useCallback, useState } from "react";
 import "./index.css";
+import { FileIcon } from "../../assets/svg";
 
 const UploadDragAndDrop = () => {
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleDragOver = (e: any) => {
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
-  const handleDrop = (e: any) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const files = e.dataTransfer.files;
     if (files && files.length > 0) {
@@ -17,7 +18,7 @@ const UploadDragAndDrop = () => {
     }
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files[0];
     setSelectedFile(file);
   };
@@ -36,17 +37,16 @@ const UploadDragAndDrop = () => {
         <input
           type="file"
           onChange={handleChange}
-          style={{ display: "none" }}
+          className="hide-input"
           id="fileInput"
         />
-        <label htmlFor="fileInput" style={{ cursor: "pointer" }}>
-          Drag & Drop Here Or Browse
-        </label>
-        <br />
-        {selectedFile && <p>Selected file: {selectedFile.name}</p>}
+        <div className="container mb-2">
+          <FileIcon width={"30"} height={"30"} />
+        </div>
+        <label htmlFor="fileInput">Drag & Drop Here Or Browse</label>
       </div>
-      <button onClick={handleSubmit} style={{ marginTop: "10px" }}>
-        Subir Archivo
+      <button onClick={handleSubmit} className="uploadManifestButton">
+        Upload Manifest
       </button>
     </div>
   );

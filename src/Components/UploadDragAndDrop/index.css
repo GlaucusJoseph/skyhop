@@ -6,4 +6,23 @@
 
 .dnd-box-internal {
   border: 2px dashed #ccc;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadManifestButton {
+  margin-top: 20px;
+  background-color: #1d3d66;
+  color: white;
+  width: 250px;
+  height: 40px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.hide-input {
+  display: none;
 }

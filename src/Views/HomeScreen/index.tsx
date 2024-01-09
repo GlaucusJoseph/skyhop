@@ -31,10 +31,6 @@ const HomeScreen = () => {
   });
 
   useEffect(() => {
-    console.log(selectedFile);
-  }, [selectedFile]);
-
-  useEffect(() => {
     if (selectedFile) {
       const duration = 1500;
       const target = 100;

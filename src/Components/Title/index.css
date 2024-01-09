@@ -1,0 +1,42 @@
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-switch {
+  width: 60px;
+  height: 30px;
+  background-color: #b3b3b3;
+  border: 3px solid #f0f4f8;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-switch.on {
+  background-color: #1d3d66;
+}
+
+.slider {
+  width: 20px;
+  height: 20px;
+  background-color: #f0f4f8;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.slider.on {
+  transform: translateX(30px) translateY(-50%);
+  left: 2px;
+  background-color: #f0f4f8;
+}
+
+.vertical-divider {
+  border-left: 2px solid #b3b3b3;
+  height: 30px;
+}

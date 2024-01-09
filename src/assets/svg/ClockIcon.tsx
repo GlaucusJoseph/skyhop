@@ -12,18 +12,18 @@ export const ClockIcon: React.FC<IconProps> = ({ width, height }) => {
     >
       <g
         fill="#1d3d66"
-        fill-rule="nonzero"
+        fillRule="nonzero"
         stroke="none"
-        stroke-width="1"
-        stroke-linecap="butt"
-        stroke-linejoin="miter"
-        stroke-miterlimit="10"
-        stroke-dasharray=""
-        stroke-dashoffset="0"
-        font-family="none"
-        font-weight="none"
-        font-size="none"
-        text-anchor="none"
+        strokeWidth="1"
+        strokeLinecap="butt"
+        strokeLinejoin="miter"
+        strokeMiterlimit="10"
+        strokeDasharray=""
+        strokeDashoffset="0"
+        fontFamily="none"
+        fontWeight="none"
+        fontSize="none"
+        textAnchor="none"
         style={{ mixBlendMode: "normal" }}
       >
         <g transform="translate(308.3305,143.77687) rotate(140) scale(5.33333,5.33333)">

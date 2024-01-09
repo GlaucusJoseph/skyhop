@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import UploadDragAndDrop from "../../Components/UploadDragAndDrop";
 import { PictureIcon } from "../../assets/svg";
 import bytesToMB from "../../Utils/bytesToMB";
-import ToggleButton from "../../Components/Title";
+import ToggleButton from "../../Components/ToggleButton";
 import { ClockIcon } from "../../assets/svg/ClockIcon";
 
 const HomeScreen = () => {
@@ -153,33 +153,85 @@ const HomeScreen = () => {
                 <div className="col-5">
                   <div className="col-12">
                     <label>Split schedule using social distancing?</label>
+                    <div className="d-flex mt-2">
+                      <div className="form-check me-4 radio-social-distancing">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault1"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="flexRadioDefault1"
+                        >
+                          Yes
+                        </label>
+                      </div>
+                      <div className="form-check radio-social-distancing">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault2"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="flexRadioDefault2"
+                        >
+                          No
+                        </label>
+                      </div>
+                    </div>
                   </div>
+                  <hr />
                   <div className="col-12">
-                    <ul>
-                      <li>
-                        Conducted maintenance, bug fixes, and made optimizations
-                        using technologies such as JavaScript, TypeScript,
-                        React, Meteor.js, and MongoDB.
-                      </li>
-                    </ul>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-12">
+                          <label>Location Checking:</label>
+                        </div>
+                        <div className="col-12">
+                          <label>All Available!</label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  <hr />
                   <div className="col-12">
-                    <ul>
-                      <li>
-                        Conducted maintenance, bug fixes, and made optimizations
-                        using technologies such as JavaScript, TypeScript,
-                        React, Meteor.js, and MongoDB.
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-12">
-                    <ul>
-                      <li>
-                        Conducted maintenance, bug fixes, and made optimizations
-                        using technologies such as JavaScript, TypeScript,
-                        React, Meteor.js, and MongoDB.
-                      </li>
-                    </ul>
+                    <div className="container">
+                      <label>Client:</label>
+                    </div>
+                    <div className="d-flex mt-2">
+                      <div className="form-check me-4 radio-social-distancing">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault1"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="flexRadioDefault1"
+                        >
+                          Single
+                        </label>
+                      </div>
+                      <div className="form-check radio-social-distancing">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="flexRadioDefault"
+                          id="flexRadioDefault2"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="flexRadioDefault2"
+                        >
+                          Multiple
+                        </label>
+                      </div>
+                    </div>
                   </div>
                   <div className="col-12">
                     <ul>

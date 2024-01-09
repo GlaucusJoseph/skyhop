@@ -15,7 +15,7 @@
 .leave-button {
   top: 10px;
   right: 10px;
-  background-color: rgb(48, 85, 140);
+  background-color: #1d3d66;
   color: white;
   border-radius: 15px;
   height: 45px;
@@ -24,7 +24,6 @@
 }
 
 .title-file-upload {
-  color: rgb(48, 85, 140);
   text-align: center;
   margin-bottom: 3rem;
 }
@@ -32,7 +31,9 @@
 .underline {
   text-decoration: underline;
   text-underline-offset: 1.2rem;
-  text-decoration-color: rgb(207, 207, 207);
+  text-decoration-color: #dfe0e6;
+  text-decoration-thickness: 2px;
+  color: #1d3d66;
 }
 
 .file-uploaded-text {
@@ -44,10 +45,9 @@
   display: none;
 }
 
-/* Estilo para el nuevo botón de radio */
 .radio-social-distancing .form-check-label {
   position: relative;
-  padding-left: 25px;
+  padding-left: 28px;
   cursor: pointer;
 }
 
@@ -57,22 +57,30 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 15px;
-  height: 15px;
-  border: 2px solid #007bff;
+  width: 22px;
+  height: 22px;
+  border: 3px solid #1d3d66;
   border-radius: 50%;
   background-color: white;
 }
 
-/* Estilo cuando el radio está seleccionado */
 .radio-social-distancing .form-check-input:checked + .form-check-label::after {
   content: "";
   position: absolute;
   left: 5px;
   top: 50%;
   transform: translateY(-50%);
-  width: 7px;
-  height: 7px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background-color: #007bff;
+  background-color: #1d3d66;
+}
+
+.special-text {
+  color: #1d3d66;
+  font-weight: bold;
+}
+
+.shorter-hr {
+  width: 57%;
 }

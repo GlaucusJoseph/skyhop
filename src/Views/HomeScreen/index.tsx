@@ -6,6 +6,7 @@ import { PictureIcon } from "../../assets/svg";
 import bytesToMB from "../../Utils/bytesToMB";
 import ToggleButton from "../../Components/ToggleButton";
 import { ClockIcon } from "../../assets/svg/ClockIcon";
+import { IMPORT_NAMES } from "../../constants";
 
 const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -37,8 +38,9 @@ const HomeScreen = () => {
       <div className="container file-upload-box">
         <button className="leave-button">X</button>
         <div className="file-upload-box-form px-5">
-          <h1 className="title-file-upload underline">Document Upload</h1>
-
+          <h1 className="title-file-upload underline special-text">
+            Document Upload
+          </h1>
           <form onSubmit={handleSubmit(onSubmitFullRegister)}>
             <div className="container">
               <div className="row">
@@ -47,27 +49,28 @@ const HomeScreen = () => {
                     <div className="form-group">
                       <select
                         id="selectedImportName"
-                        className="form-select"
-                        style={{ outline: "none" }}
+                        className="form-select special-text"
                         {...register("selectedImportName", {
-                          required: "You should select a ",
+                          required: "You should select an import name",
                         })}
                       >
                         <option value="" disabled selected>
                           Select Import Name:
                         </option>
-                        <option value="users">Users</option>
-                        <option value="vehicles">Vehicles</option>
-                        <option value="airlines">Airlines</option>
+                        {IMPORT_NAMES.map((name) => (
+                          <option key={name.value} value={name.value}>
+                            {name.label}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
-                  <hr />
+                  <hr className="shorter-hr" />
                   <div className="col-12">
-                    <label>Select a manifest that you'd like to import</label>
-                    <div className="container">
-                      <UploadDragAndDrop setSelectedFile={setSelectedFile} />
-                    </div>
+                    <label className="special-text mb-2">
+                      Select a manifest that you'd like to import
+                    </label>
+                    <UploadDragAndDrop setSelectedFile={setSelectedFile} />
                   </div>
                   <hr />
                   <div className="col-12">
@@ -199,9 +202,7 @@ const HomeScreen = () => {
                   </div>
                   <hr />
                   <div className="col-12">
-                    <div className="container">
-                      <label>Client:</label>
-                    </div>
+                    <label>Client:</label>
                     <div className="d-flex mt-2">
                       <div className="form-check me-4 radio-social-distancing">
                         <input
@@ -232,21 +233,43 @@ const HomeScreen = () => {
                         </label>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-12">
-                    <ul>
-                      <li>
-                        Conducted maintenance, bug fixes, and made optimizations
-                        using technologies such as JavaScript, TypeScript,
-                        React, Meteor.js, and MongoDB.
-                      </li>
-                    </ul>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div>
+                        <span>Testing Center 1</span>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <select
+                          id="selectedImportName"
+                          className="form-select"
+                          style={{ outline: "none", width: "auto" }}
+                          {...register("selectedImportName", {
+                            required: "You should select a ",
+                          })}
+                        >
+                          <option value="" disabled selected>
+                            Select Client
+                          </option>
+                          <option value="uber">Uber</option>
+                          <option value="american">AA</option>
+                          <option value="spirit">Spirit</option>
+                          <option value="alaska">Alaska</option>
+                        </select>
+                        <ClockIcon width={"30"} height={"30"} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <h5>
+              Data in the import file is correct. Please press Continue to
+              import.
+            </h5>
             <button className="uploadManifestButton" type="submit">
               Continue Import
+            </button>
+            <button className="uploadManifestButton" type="submit">
+              Cancel
             </button>
           </form>
         </div>

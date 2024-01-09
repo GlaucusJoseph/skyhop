@@ -4,11 +4,14 @@ import { useForm } from "react-hook-form";
 import UploadDragAndDrop from "../../Components/UploadDragAndDrop";
 import { PictureIcon } from "../../assets/svg";
 import bytesToMB from "../../Utils/bytesToMB";
+import ToggleButton from "../../Components/Title";
+import { ClockIcon } from "../../assets/svg/ClockIcon";
 
 const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [isToleranceWindonOn, setIsToleranceWindonOn] = useState(true);
 
   const {
     handleSubmit,
@@ -113,21 +116,43 @@ const HomeScreen = () => {
                   <hr />
                   <hr />
                   <div className="col-12">
-                    <label>Elapse Data Checking:</label>
-                    <label>No Elapsed Dates!</label>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-12">
+                          <label>Elapse Data Checking:</label>
+                        </div>
+                        <div className="col-12">
+                          <label>No Elapsed Dates!</label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <hr />
-                  <div className="col-12">asdfasdf</div>
+                  <div className="col-12">
+                    <label>Tolerance Window:</label>
+                    <div className="row">
+                      <div className="col-6 d-flex align-items-center">
+                        <div className="toggle-container">
+                          <ToggleButton
+                            isOpen={isToleranceWindonOn}
+                            setIsOpen={setIsToleranceWindonOn}
+                          />
+                          <span className="ms-2">
+                            TOGGLE {isToleranceWindonOn ? "on" : "off"}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="col-1 vertical-divider"></div>
+                      <div className="col-5 d-flex align-items-center">
+                        <ClockIcon width={"30"} height={"30"} />
+                        <span className="ms-2">Select Tolerance Level</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="col-5">
                   <div className="col-12">
-                    <ul>
-                      <li>
-                        Conducted maintenance, bug fixes, and made optimizations
-                        using technologies such as JavaScript, TypeScript,
-                        React, Meteor.js, and MongoDB.
-                      </li>
-                    </ul>
+                    <label>Split schedule using social distancing?</label>
                   </div>
                   <div className="col-12">
                     <ul>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useForm } from "react-hook-form";
 import UploadDragAndDrop from "../../Components/UploadDragAndDrop";
@@ -6,7 +6,7 @@ import { PictureIcon } from "../../assets/svg";
 import bytesToMB from "../../Utils/bytesToMB";
 import ToggleButton from "../../Components/ToggleButton";
 import { ClockIcon } from "../../assets/svg/ClockIcon";
-import { IMPORT_NAMES } from "../../constants";
+import { IMPORT_NAMES, CLIENTS } from "../../constants";
 
 const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -293,10 +293,11 @@ const HomeScreen = () => {
                           <option value="" disabled selected>
                             Select Client
                           </option>
-                          <option value="uber">Uber</option>
-                          <option value="american">AA</option>
-                          <option value="spirit">Spirit</option>
-                          <option value="alaska">Alaska</option>
+                          {CLIENTS.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
                         </select>
                         <ClockIcon width={"30"} height={"30"} />
                       </div>
@@ -316,10 +317,11 @@ const HomeScreen = () => {
                           <option value="" disabled selected>
                             Select Client
                           </option>
-                          <option value="uber">Uber</option>
-                          <option value="american">AA</option>
-                          <option value="spirit">Spirit</option>
-                          <option value="alaska">Alaska</option>
+                          {CLIENTS.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
                         </select>
                         <ClockIcon width={"30"} height={"30"} />
                       </div>
@@ -339,10 +341,11 @@ const HomeScreen = () => {
                           <option value="" disabled selected>
                             Select Client
                           </option>
-                          <option value="uber">Uber</option>
-                          <option value="american">AA</option>
-                          <option value="spirit">Spirit</option>
-                          <option value="alaska">Alaska</option>
+                          {CLIENTS.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
                         </select>
                         <ClockIcon width={"30"} height={"30"} />
                       </div>
@@ -362,10 +365,11 @@ const HomeScreen = () => {
                           <option value="" disabled selected>
                             Select Client
                           </option>
-                          <option value="uber">Uber</option>
-                          <option value="american">AA</option>
-                          <option value="spirit">Spirit</option>
-                          <option value="alaska">Alaska</option>
+                          {CLIENTS.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
                         </select>
                         <ClockIcon width={"30"} height={"30"} />
                       </div>

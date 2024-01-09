@@ -11,7 +11,6 @@ import { IMPORT_NAMES } from "../../constants";
 const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isToleranceWindonOn, setIsToleranceWindonOn] = useState(true);
 
@@ -19,10 +18,15 @@ const HomeScreen = () => {
     handleSubmit,
     formState: { errors },
     register,
-    setValue,
   } = useForm({
     defaultValues: {
       selectedImportName: "",
+      socialDistancing: "no",
+      numberClients: "single",
+      selectTestingCenter1: "",
+      selectTestingCenter2: "",
+      selectTestingCenter3: "",
+      selectTestingCenter4: "",
     },
   });
 
@@ -30,7 +34,27 @@ const HomeScreen = () => {
     console.log(selectedFile);
   }, [selectedFile]);
 
-  const onSubmitFullRegister = async (data: any) => {
+  useEffect(() => {
+    if (selectedFile) {
+      const duration = 1500;
+      const target = 100;
+      const intervalTime = duration / target;
+
+      let currentProgress = 0;
+      const interval = setInterval(() => {
+        currentProgress++;
+        setUploadProgress(currentProgress);
+
+        if (currentProgress >= target) {
+          clearInterval(interval);
+        }
+      }, intervalTime);
+
+      return () => clearInterval(interval);
+    }
+  }, [selectedFile]);
+
+  const onSubmitForm = async (data: any) => {
     console.log("=========================");
     console.log(data);
     console.log(selectedFile);
@@ -45,7 +69,7 @@ const HomeScreen = () => {
           <h1 className="title-file-upload underline special-text-bold">
             Document Upload
           </h1>
-          <form onSubmit={handleSubmit(onSubmitFullRegister)}>
+          <form onSubmit={handleSubmit(onSubmitForm)}>
             <div className="container">
               <div className="row">
                 <div className="col-7">
@@ -58,7 +82,7 @@ const HomeScreen = () => {
                           required: "You should select an import name",
                         })}
                       >
-                        <option value="" disabled selected>
+                        <option value="" disabled>
                           Select Import Name:
                         </option>
                         {IMPORT_NAMES.map((name) => (
@@ -110,7 +134,7 @@ const HomeScreen = () => {
                                 <div
                                   className="progress-bar progress-bar-custom-color"
                                   role="progressbar"
-                                  style={{ width: `34%` }}
+                                  style={{ width: `${uploadProgress}%` }}
                                   aria-valuenow={uploadProgress}
                                   aria-valuemin={0}
                                   aria-valuemax={100}
@@ -140,7 +164,9 @@ const HomeScreen = () => {
                   </div>
                   <hr className="shorter-hr" />
                   <div className="col-12">
-                    <label>Tolerance Window:</label>
+                    <label className="special-text-bold">
+                      Tolerance Window:
+                    </label>
                     <div className="row">
                       <div className="col-6 d-flex align-items-center">
                         <div className="toggle-container">
@@ -148,7 +174,7 @@ const HomeScreen = () => {
                             isOpen={isToleranceWindonOn}
                             setIsOpen={setIsToleranceWindonOn}
                           />
-                          <span className="ms-2">
+                          <span className="ms-2 special-text">
                             TOGGLE {isToleranceWindonOn ? "on" : "off"}
                           </span>
                         </div>
@@ -156,25 +182,30 @@ const HomeScreen = () => {
                       <div className="col-1 vertical-divider"></div>
                       <div className="col-5 d-flex align-items-center">
                         <ClockIcon width={"30"} height={"30"} />
-                        <span className="ms-2">Select Tolerance Level</span>
+                        <span className="ms-2 special-text">
+                          Select Tolerance Level
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="col-5">
                   <div className="col-12">
-                    <label>Split schedule using social distancing?</label>
-                    <div className="d-flex mt-2">
+                    <label className="special-text-bold">
+                      Split schedule using social distancing?
+                    </label>
+                    <div className="d-flex mt-1">
                       <div className="form-check me-4 radio-social-distancing">
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault1"
+                          id="social-distancing-yes"
+                          value="yes"
+                          {...register("socialDistancing")}
                         />
                         <label
-                          className="form-check-label"
-                          htmlFor="flexRadioDefault1"
+                          className="form-check-label special-text"
+                          htmlFor="social-distancing-yes"
                         >
                           Yes
                         </label>
@@ -183,12 +214,13 @@ const HomeScreen = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault2"
+                          id="social-distancing-no"
+                          value="no"
+                          {...register("socialDistancing")}
                         />
                         <label
-                          className="form-check-label"
-                          htmlFor="flexRadioDefault2"
+                          className="form-check-label special-text"
+                          htmlFor="social-distancing-no"
                         >
                           No
                         </label>
@@ -200,28 +232,31 @@ const HomeScreen = () => {
                     <div className="container">
                       <div className="row">
                         <div className="col-12">
-                          <label>Location Checking:</label>
+                          <label className="special-text-bold">
+                            Location Checking:
+                          </label>
                         </div>
                         <div className="col-12">
-                          <label>All Available!</label>
+                          <label className="sucess-text">All Available!</label>
                         </div>
                       </div>
                     </div>
                   </div>
                   <hr />
                   <div className="col-12">
-                    <label>Client:</label>
-                    <div className="d-flex mt-2">
+                    <label className="special-text-bold">Client:</label>
+                    <div className="d-flex mt-1">
                       <div className="form-check me-4 radio-social-distancing">
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="clientAmount"
-                          id="clientAmount1"
+                          id="client-single"
+                          value="single"
+                          {...register("numberClients")}
                         />
                         <label
-                          className="form-check-label"
-                          htmlFor="clientAmount1"
+                          className="form-check-label special-text"
+                          htmlFor="client-single"
                         >
                           Single
                         </label>
@@ -230,27 +265,97 @@ const HomeScreen = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="clientAmount"
-                          id="clientAmount2"
+                          id="client-multiple"
+                          value="multiple"
+                          {...register("numberClients")}
                         />
                         <label
-                          className="form-check-label"
-                          htmlFor="clientAmount2"
+                          className="form-check-label special-text"
+                          htmlFor="client-multiple"
                         >
                           Multiple
                         </label>
                       </div>
                     </div>
-                    <div className="d-flex justify-content-between align-items-center">
+
+                    <div className="d-flex justify-content-between align-items-center mt-4">
                       <div>
-                        <span>Testing Center 1</span>
+                        <span className="special-text">Testing Center 1</span>
                       </div>
                       <div className="d-flex align-items-center">
                         <select
-                          id="selectedImportName"
-                          className="form-select"
-                          style={{ outline: "none", width: "auto" }}
-                          {...register("selectedImportName", {
+                          id="selectTestingCenter1"
+                          className="form-select special-text"
+                          {...register("selectTestingCenter1", {
+                            required: "You should select a ",
+                          })}
+                        >
+                          <option value="" disabled selected>
+                            Select Client
+                          </option>
+                          <option value="uber">Uber</option>
+                          <option value="american">AA</option>
+                          <option value="spirit">Spirit</option>
+                          <option value="alaska">Alaska</option>
+                        </select>
+                        <ClockIcon width={"30"} height={"30"} />
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center mt-4">
+                      <div>
+                        <span className="special-text">Testing Center 2</span>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <select
+                          id="selectTestingCenter2"
+                          className="form-select special-text"
+                          {...register("selectTestingCenter2", {
+                            required: "You should select a ",
+                          })}
+                        >
+                          <option value="" disabled selected>
+                            Select Client
+                          </option>
+                          <option value="uber">Uber</option>
+                          <option value="american">AA</option>
+                          <option value="spirit">Spirit</option>
+                          <option value="alaska">Alaska</option>
+                        </select>
+                        <ClockIcon width={"30"} height={"30"} />
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center mt-4">
+                      <div>
+                        <span className="special-text">Testing Center 3</span>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <select
+                          id="selectTestingCenter3"
+                          className="form-select special-text"
+                          {...register("selectTestingCenter3", {
+                            required: "You should select a ",
+                          })}
+                        >
+                          <option value="" disabled selected>
+                            Select Client
+                          </option>
+                          <option value="uber">Uber</option>
+                          <option value="american">AA</option>
+                          <option value="spirit">Spirit</option>
+                          <option value="alaska">Alaska</option>
+                        </select>
+                        <ClockIcon width={"30"} height={"30"} />
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center mt-4">
+                      <div>
+                        <span className="special-text">Testing Center 4</span>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <select
+                          id="selectTestingCenter4"
+                          className="form-select special-text"
+                          {...register("selectTestingCenter4", {
                             required: "You should select a ",
                           })}
                         >
@@ -269,16 +374,20 @@ const HomeScreen = () => {
                 </div>
               </div>
             </div>
-            <h5>
-              Data in the import file is correct. Please press Continue to
-              import.
-            </h5>
-            <button className="upload-manifest-button" type="submit">
-              Continue Import
-            </button>
-            <button className="upload-manifest-button" type="submit">
-              Cancel
-            </button>
+            <div className="mt-3">
+              <h5 className="text-center special-text-bold">
+                Data in the import file is correct. Please press Continue to
+                import.
+              </h5>
+              <div className="d-flex justify-content-center">
+                <button className="button-continue me-2" type="submit">
+                  Continue Import
+                </button>
+                <button className="button-cancel" type="button">
+                  Cancel
+                </button>
+              </div>
+            </div>
           </form>
         </div>
       </div>

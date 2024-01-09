@@ -104,3 +104,28 @@
 .progress-bar-custom-color {
   background-color: #fa9c27;
 }
+
+.clients-select-style {
+  outline: none;
+  width: auto;
+}
+
+.button-continue {
+  margin-top: 20px;
+  background-color: #1d3d66;
+  color: white;
+  width: 250px;
+  height: 40px;
+  font-weight: 400;
+  border-radius: 10px;
+}
+.button-cancel {
+  margin-top: 20px;
+  background-color: white;
+  color: #fa9c27;
+  border: 3px solid #fa9c27;
+  width: 250px;
+  height: 40px;
+  font-weight: 400;
+  border-radius: 10px;
+}

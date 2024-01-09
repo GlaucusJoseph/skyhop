@@ -78,9 +78,29 @@
 
 .special-text {
   color: #1d3d66;
+}
+
+.special-text-bold {
+  color: #1d3d66;
   font-weight: bold;
+}
+
+.sucess-text {
+  color: #4db56a;
+  font-weight: 500;
 }
 
 .shorter-hr {
   width: 57%;
+}
+
+.file-name-grey {
+  color: #b3b3b3;
+}
+
+.progress-custom {
+  height: 3px;
+}
+.progress-bar-custom-color {
+  background-color: #fa9c27;
 }

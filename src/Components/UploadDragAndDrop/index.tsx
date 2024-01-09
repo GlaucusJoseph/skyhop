@@ -1,10 +1,13 @@
-import { useCallback, useState } from "react";
 import "./index.css";
 import { FileIcon } from "../../assets/svg";
 
-const UploadDragAndDrop = (props: any) => {
-  const { setSelectedFile } = props;
+interface UploadDragAndDropProps {
+  setSelectedFile: (file: File | null) => void;
+}
 
+const UploadDragAndDrop: React.FC<UploadDragAndDropProps> = ({
+  setSelectedFile,
+}) => {
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
@@ -19,10 +22,11 @@ const UploadDragAndDrop = (props: any) => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      setSelectedFile(file);
+    }
   };
-
   return (
     <div className="dnd-box-external">
       <div
@@ -39,9 +43,11 @@ const UploadDragAndDrop = (props: any) => {
         <div className="container mb-2">
           <FileIcon width={"30"} height={"30"} />
         </div>
-        <label htmlFor="fileInput">Drag & Drop Here Or Browse</label>
+        <label htmlFor="fileInput" className="special-text">
+          Drag & Drop Here Or <span className="special-text-bold">Browse</span>
+        </label>
       </div>
-      <button className="uploadManifestButton" type="button">
+      <button className="upload-manifest-button" type="button">
         Upload Manifest
       </button>
     </div>

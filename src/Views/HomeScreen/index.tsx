@@ -10,7 +10,8 @@ import { IMPORT_NAMES } from "../../constants";
 
 const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isToleranceWindonOn, setIsToleranceWindonOn] = useState(true);
 
@@ -30,7 +31,10 @@ const HomeScreen = () => {
   }, [selectedFile]);
 
   const onSubmitFullRegister = async (data: any) => {
+    console.log("=========================");
     console.log(data);
+    console.log(selectedFile);
+    console.log("=========================");
   };
 
   return (
@@ -38,7 +42,7 @@ const HomeScreen = () => {
       <div className="container file-upload-box">
         <button className="leave-button">X</button>
         <div className="file-upload-box-form px-5">
-          <h1 className="title-file-upload underline special-text">
+          <h1 className="title-file-upload underline special-text-bold">
             Document Upload
           </h1>
           <form onSubmit={handleSubmit(onSubmitFullRegister)}>
@@ -49,7 +53,7 @@ const HomeScreen = () => {
                     <div className="form-group">
                       <select
                         id="selectedImportName"
-                        className="form-select special-text"
+                        className="form-select special-text-bold"
                         {...register("selectedImportName", {
                           required: "You should select an import name",
                         })}
@@ -67,7 +71,7 @@ const HomeScreen = () => {
                   </div>
                   <hr className="shorter-hr" />
                   <div className="col-12">
-                    <label className="special-text mb-2">
+                    <label className="special-text-bold mb-2">
                       Select a manifest that you'd like to import
                     </label>
                     <UploadDragAndDrop setSelectedFile={setSelectedFile} />
@@ -84,7 +88,7 @@ const HomeScreen = () => {
                             <div className="col-12 file-uploaded-text">
                               {selectedFile && (
                                 <>
-                                  <div className="file-name">
+                                  <div className="file-name-grey">
                                     {selectedFile.name}
                                   </div>
                                   <div className="file-size">
@@ -93,18 +97,20 @@ const HomeScreen = () => {
                                 </>
                               )}
                               {!selectedFile && (
-                                <div>No file has been selected</div>
+                                <div className="file-name-grey">
+                                  No file has been selected
+                                </div>
                               )}
                             </div>
                             <div className="col-12">
                               <div
-                                className="progress"
+                                className="progress progress-custom"
                                 style={{ width: "100%" }}
                               >
                                 <div
-                                  className="progress-bar"
+                                  className="progress-bar progress-bar-custom-color"
                                   role="progressbar"
-                                  style={{ width: `${uploadProgress}%` }}
+                                  style={{ width: `34%` }}
                                   aria-valuenow={uploadProgress}
                                   aria-valuemin={0}
                                   aria-valuemax={100}
@@ -117,20 +123,22 @@ const HomeScreen = () => {
                     </div>
                   </div>
                   <hr />
-                  <hr />
+                  <hr className="shorter-hr" />
                   <div className="col-12">
-                    <div className="container">
-                      <div className="row">
-                        <div className="col-12">
-                          <label>Elapse Data Checking:</label>
-                        </div>
-                        <div className="col-12">
-                          <label>No Elapsed Dates!</label>
-                        </div>
+                    <div className="row">
+                      <div className="col-12">
+                        <label className="special-text-bold">
+                          Elapse Data Checking:
+                        </label>
+                      </div>
+                      <div className="col-12">
+                        <label className="sucess-text ">
+                          No Elapsed Dates!
+                        </label>
                       </div>
                     </div>
                   </div>
-                  <hr />
+                  <hr className="shorter-hr" />
                   <div className="col-12">
                     <label>Tolerance Window:</label>
                     <div className="row">
@@ -265,10 +273,10 @@ const HomeScreen = () => {
               Data in the import file is correct. Please press Continue to
               import.
             </h5>
-            <button className="uploadManifestButton" type="submit">
+            <button className="upload-manifest-button" type="submit">
               Continue Import
             </button>
-            <button className="uploadManifestButton" type="submit">
+            <button className="upload-manifest-button" type="submit">
               Cancel
             </button>
           </form>

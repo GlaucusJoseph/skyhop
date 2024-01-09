@@ -207,12 +207,12 @@ const HomeScreen = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault1"
+                          name="clientAmount"
+                          id="clientAmount1"
                         />
                         <label
                           className="form-check-label"
-                          htmlFor="flexRadioDefault1"
+                          htmlFor="clientAmount1"
                         >
                           Single
                         </label>
@@ -221,12 +221,12 @@ const HomeScreen = () => {
                         <input
                           className="form-check-input"
                           type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault2"
+                          name="clientAmount"
+                          id="clientAmount2"
                         />
                         <label
                           className="form-check-label"
-                          htmlFor="flexRadioDefault2"
+                          htmlFor="clientAmount2"
                         >
                           Multiple
                         </label>

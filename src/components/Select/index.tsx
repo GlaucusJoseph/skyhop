@@ -26,7 +26,7 @@ const Select: React.FC<SelectProps<FormValues>> = ({
           className="form-select special-text me-2"
           {...register(name)}
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             Select Client
           </option>
           {options.map((option) => (

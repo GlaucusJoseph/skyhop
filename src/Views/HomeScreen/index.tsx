@@ -7,12 +7,15 @@ import bytesToMB from "../../Utils/bytesToMB";
 import ToggleButton from "../../Components/ToggleButton";
 import { ClockIcon } from "../../assets/svg/ClockIcon";
 import { IMPORT_NAMES, CLIENTS } from "../../constants";
+import Select from "../../Components/Select";
+import { FormValues } from "../../Interfaces";
 
 const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isToleranceWindonOn, setIsToleranceWindonOn] = useState(true);
+  const [clientAmount, setClientAmount] = useState("multiple");
 
   const {
     handleSubmit,
@@ -22,7 +25,7 @@ const HomeScreen = () => {
     defaultValues: {
       selectedImportName: "",
       socialDistancing: "no",
-      numberClients: "single",
+      numberClients: "multiple",
       selectTestingCenter1: "",
       selectTestingCenter2: "",
       selectTestingCenter3: "",
@@ -50,11 +53,17 @@ const HomeScreen = () => {
     }
   }, [selectedFile]);
 
-  const onSubmitForm = async (data: any) => {
+  const onSubmitForm = async (data: FormValues) => {
     console.log("=========================");
     console.log(data);
     console.log(selectedFile);
     console.log("=========================");
+  };
+
+  const { onChange: registerOnChange } = register("numberClients");
+  const handleClientTypeChange = (e) => {
+    setClientAmount(e.target.value);
+    registerOnChange(e);
   };
 
   return (
@@ -248,7 +257,8 @@ const HomeScreen = () => {
                           type="radio"
                           id="client-single"
                           value="single"
-                          {...register("numberClients")}
+                          onChange={handleClientTypeChange}
+                          checked={clientAmount === "single"}
                         />
                         <label
                           className="form-check-label special-text"
@@ -263,7 +273,8 @@ const HomeScreen = () => {
                           type="radio"
                           id="client-multiple"
                           value="multiple"
-                          {...register("numberClients")}
+                          onChange={handleClientTypeChange}
+                          checked={clientAmount === "multiple"}
                         />
                         <label
                           className="form-check-label special-text"
@@ -273,103 +284,34 @@ const HomeScreen = () => {
                         </label>
                       </div>
                     </div>
-
-                    <div className="d-flex justify-content-between align-items-center mt-4">
-                      <div>
-                        <span className="special-text">Testing Center 1</span>
-                      </div>
-                      <div className="d-flex align-items-center">
-                        <select
-                          id="selectTestingCenter1"
-                          className="form-select special-text"
-                          {...register("selectTestingCenter1", {
-                            required: "You should select a ",
-                          })}
-                        >
-                          <option value="" disabled selected>
-                            Select Client
-                          </option>
-                          {CLIENTS.map((option) => (
-                            <option key={option.value} value={option.value}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </select>
-                        <ClockIcon width={"30"} height={"30"} />
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center mt-4">
-                      <div>
-                        <span className="special-text">Testing Center 2</span>
-                      </div>
-                      <div className="d-flex align-items-center">
-                        <select
-                          id="selectTestingCenter2"
-                          className="form-select special-text"
-                          {...register("selectTestingCenter2", {
-                            required: "You should select a ",
-                          })}
-                        >
-                          <option value="" disabled selected>
-                            Select Client
-                          </option>
-                          {CLIENTS.map((option) => (
-                            <option key={option.value} value={option.value}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </select>
-                        <ClockIcon width={"30"} height={"30"} />
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center mt-4">
-                      <div>
-                        <span className="special-text">Testing Center 3</span>
-                      </div>
-                      <div className="d-flex align-items-center">
-                        <select
-                          id="selectTestingCenter3"
-                          className="form-select special-text"
-                          {...register("selectTestingCenter3", {
-                            required: "You should select a ",
-                          })}
-                        >
-                          <option value="" disabled selected>
-                            Select Client
-                          </option>
-                          {CLIENTS.map((option) => (
-                            <option key={option.value} value={option.value}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </select>
-                        <ClockIcon width={"30"} height={"30"} />
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center mt-4">
-                      <div>
-                        <span className="special-text">Testing Center 4</span>
-                      </div>
-                      <div className="d-flex align-items-center">
-                        <select
-                          id="selectTestingCenter4"
-                          className="form-select special-text"
-                          {...register("selectTestingCenter4", {
-                            required: "You should select a ",
-                          })}
-                        >
-                          <option value="" disabled selected>
-                            Select Client
-                          </option>
-                          {CLIENTS.map((option) => (
-                            <option key={option.value} value={option.value}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </select>
-                        <ClockIcon width={"30"} height={"30"} />
-                      </div>
-                    </div>
+                    <Select
+                      register={register}
+                      name={"selectTestingCenter1"}
+                      label={"Testing Center 1"}
+                      options={CLIENTS}
+                    />
+                    {clientAmount === "multiple" && (
+                      <>
+                        <Select
+                          register={register}
+                          name={"selectTestingCenter2"}
+                          label={"Testing Center 2"}
+                          options={CLIENTS}
+                        />
+                        <Select
+                          register={register}
+                          name={"selectTestingCenter3"}
+                          label={"Testing Center 3"}
+                          options={CLIENTS}
+                        />
+                        <Select
+                          register={register}
+                          name={"selectTestingCenter4"}
+                          label={"Testing Center 4"}
+                          options={CLIENTS}
+                        />
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
+# SkyHop Frontend Developer Interview Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is designed for a Frontend Developer position at SkyHop. The core of this project is a form-based application, showcasing essential frontend skills and understanding.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Before installing, ensure you have Git installed on your machine. You can clone the project repository using the following command:
 
-- Configure the top-level `parserOptions` property like this:
+`git clone https://github.com/GlaucusJoseph/skyhop.git`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Installation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+To set up the development environment, navigate to the project directory and run the following commands:
+
+`npm install`
+`npm run dev`
+
+This will install all necessary dependencies and start a local development server.
+
+## Built With
+
+This project leverages the power of several key libraries and frameworks:
+
+- **Bootstrap** (v5.3.2)
+- **React** (v18.2.0)
+- **React-DOM** (v18.2.0)
+- **React Hook Form** (v7.49.2)
+- **React Router DOM** (v6.21.1)
+- **TypeScript** (v5.2.2)
+- **Vite** (v5.0.8)

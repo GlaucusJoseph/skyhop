@@ -8,17 +8,12 @@ import { FormValues } from "../../Interfaces";
 import { Select, ToggleButton, UploadDragAndDrop } from "../../components";
 
 const HomeScreen = () => {
-  const [errorMessage, setErrorMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isToleranceWindonOn, setIsToleranceWindonOn] = useState(true);
   const [clientAmount, setClientAmount] = useState("multiple");
 
-  const {
-    handleSubmit,
-    formState: { errors },
-    register,
-  } = useForm({
+  const { handleSubmit, register } = useForm({
     defaultValues: {
       selectedImportName: "",
       socialDistancing: "no",

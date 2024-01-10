@@ -16,9 +16,9 @@ const App = () => {
     <BrowserRouter basename="/">
       <Suspense fallback={loading}>
         <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          {/*           <Route path="/afiliados" element={<ResultsScreen />} />
-          <Route path="*" element={<URLUnknown />} /> */}
+          <Route path="/skyhop" element={<HomeScreen />} />
+          {/* <Route path="/afiliados" element={<ResultsScreen />} /> */}
+          {/* <Route path="*" element={<URLUnknown />} /> */}
         </Routes>
       </Suspense>
     </BrowserRouter>

@@ -63,9 +63,9 @@ const HomeScreen = () => {
       <div className="container file-upload-box">
         <button className="leave-button">X</button>
         <div className="file-upload-box-form px-5">
-          <h1 className="title-file-upload underline special-text-bold">
+          <h3 className="title-file-upload underline special-text-bold">
             Document Upload
-          </h1>
+          </h3>
           <form onSubmit={handleSubmit(onSubmitForm)}>
             <div className="container">
               <div className="row">

@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useForm } from "react-hook-form";
-import UploadDragAndDrop from "../../Components/UploadDragAndDrop";
-import { PictureIcon } from "../../assets/svg";
+import { PictureIcon, ClockIcon } from "../../assets/svg";
 import bytesToMB from "../../Utils/bytesToMB";
-import ToggleButton from "../../Components/ToggleButton";
-import { ClockIcon } from "../../assets/svg/ClockIcon";
 import { IMPORT_NAMES, CLIENTS } from "../../constants";
-import Select from "../../Components/Select";
 import { FormValues } from "../../Interfaces";
+import { Select, ToggleButton, UploadDragAndDrop } from "../../components";
 
 const HomeScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -61,7 +58,7 @@ const HomeScreen = () => {
   };
 
   const { onChange: registerOnChange } = register("numberClients");
-  const handleClientTypeChange = (e) => {
+  const handleClientTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setClientAmount(e.target.value);
     registerOnChange(e);
   };

@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./index.css";
 import { useForm } from "react-hook-form";
-import { PictureIcon, ClockIcon } from "../../assets/svg";
+import { PictureIcon } from "../../assets/svg";
 import bytesToMB from "../../Utils/bytesToMB";
 import { IMPORT_NAMES, CLIENTS } from "../../constants";
 import { FormValues } from "../../Interfaces";
-import { Select, ToggleButton, UploadDragAndDrop } from "../../components";
+import { Select, UploadDragAndDrop } from "../../components";
+import ToleranceWindow from "./ToleranceWindow";
 
 const HomeScreen = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [isToleranceWindonOn, setIsToleranceWindonOn] = useState(true);
   const [clientAmount, setClientAmount] = useState("multiple");
 
   const { handleSubmit, register } = useForm({
@@ -57,6 +57,10 @@ const HomeScreen = () => {
     setClientAmount(e.target.value);
     registerOnChange(e);
   };
+
+  const onClick = useCallback(() => {
+    console.log("123123");
+  }, []);
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 main-box">
@@ -161,29 +165,7 @@ const HomeScreen = () => {
                   </div>
                   <hr className="shorter-hr" />
                   <div className="col-12">
-                    <label className="special-text-bold">
-                      Tolerance Window:
-                    </label>
-                    <div className="row">
-                      <div className="col-6 d-flex align-items-center">
-                        <div className="toggle-container">
-                          <ToggleButton
-                            isOpen={isToleranceWindonOn}
-                            setIsOpen={setIsToleranceWindonOn}
-                          />
-                          <span className="ms-2 special-text">
-                            TOGGLE {isToleranceWindonOn ? "on" : "off"}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="col-1 vertical-divider"></div>
-                      <div className="col-5 d-flex align-items-center">
-                        <ClockIcon width={"30"} height={"30"} />
-                        <span className="ms-2 special-text">
-                          Select Tolerance Level
-                        </span>
-                      </div>
-                    </div>
+                    <ToleranceWindow onClick={onClick} />
                   </div>
                 </div>
                 <div className="col-5">

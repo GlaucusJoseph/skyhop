@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { memo, useState } from "react";
 import { ClockIcon } from "../../../assets/svg";
 import { ToggleButton } from "../../../components";
 
-const ToleranceWindow = ({ onClick }) => {
+const ToleranceWindow = memo(({ onClick }: { onClick: () => void }) => {
   const [isToleranceWindonOn, setIsToleranceWindonOn] = useState(true);
-  console.log("???????????");
+  console.log("Check the render");
 
   return (
     <>
@@ -31,6 +31,6 @@ const ToleranceWindow = ({ onClick }) => {
       </div>
     </>
   );
-};
+});
 
-export default React.memo(ToleranceWindow);
+export default ToleranceWindow;
